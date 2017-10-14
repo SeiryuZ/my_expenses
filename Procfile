@@ -1,1 +1,1 @@
-web: python manage.py runserver 0.0.0.0:6000
+web: gunicorn poll.wsgi --log-file -
