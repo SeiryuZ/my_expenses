@@ -1,1 +1,1 @@
-web: gunicorn poll.wsgi --log-file -
+web: gunicorn my_expenses.wsgi --log-file -
