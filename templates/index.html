@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>My Expenses</title>
-  </head>
-  <body>
-    Hello world!
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    Your expenses:
+    <table>
+      {% for expense in expenses  %}
+      <tr>
+        <td>{{ expense.id }}</td>
+        <td>{{ expense.description}}</td>
+        <td><strong>{{ expense.amount}}</strong></td>
+        <td>{{ expense.created }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    Your total expenses: {{ total }}
+
+    <br /><br />
+    <a href="{% url 'add' %}">Add expenses</a>
+
+{% endblock %}

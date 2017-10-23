@@ -16,9 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from .views import hello_world
+from .views import hello_world, expense_list, add_expense
 
 urlpatterns = [
-    # url(r'^hello-world/$', hello_world),
+    url(r'^add-expense$', add_expense, name='add'),
+    url(r'^$', expense_list, name='index'),
+    url(r'^hello-world/$', hello_world),
     url(r'^admin/', admin.site.urls),
 ]
