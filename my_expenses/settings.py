@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
+import dj_database_url
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -81,6 +82,13 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# Update database configuration with $DATABASE_URL, if any
+# In effect, what this does is run with sqlite locally
+# But on production, heroku run with postgres
+db_from_env = dj_database_url.config()
+if db_from_env:
+    DATABASES['default'].update(db_from_env)
 
 
 # Password validation
